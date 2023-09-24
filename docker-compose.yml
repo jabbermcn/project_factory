@@ -1,0 +1,16 @@
+version: '3.11'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/project_factory
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      BOT_TOKEN: ${BOT_TOKEN}
+      BOT_GROUP_ID: ${BOT_GROUP_ID}
